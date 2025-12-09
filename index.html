@@ -20,139 +20,35 @@
       overflow: hidden;
       position: relative;
     }
-
-    /* Slider */
-    .slider {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .slide {
-      position: absolute;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    .slide.active { opacity: 1; }
-
-    /* Logo sol üst */
-    .logo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 192px;
-      height: auto;
-      z-index: 20;
-      margin: 10px;
-      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
-    }
-
-    /* Avatar sağ üst */
-    .avatar {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      object-fit: cover;
-      z-index: 20;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
-    /* Karşılama yazısı */
-    .welcome {
-      width: 100%;
-      max-width: 420px; /* giriş kartı ile aynı genişlik */
-      margin: 60px auto 10px auto;
-      padding: 12px 16px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 8px;
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #fff;
-      text-align: center;
-      text-shadow: 0 3px 8px rgba(0,0,0,0.6);
-      line-height: 1.6;
-    }
-
-    /* Kart */
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 420px; /* aynı genişlik */
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      animation: fadeIn 0.8s ease;
-      margin: auto;
-      margin-top: 10px;
-      z-index: 5;
-      position: relative;
-    }
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(20px);}
-      to {opacity:1; transform: translateY(0);}
-    }
-    h1 { text-align: center; margin-bottom: 0.5rem; }
-    .subtitle { text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; opacity: 0.85; }
-    .field { margin-bottom: 1rem; }
-    label { display: block; margin-bottom: 0.3rem; font-weight: bold; }
-    input {
-      width: 100%;
-      padding: 0.7rem;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-      transition: box-shadow 0.2s;
-    }
-    input:focus { box-shadow: 0 0 0 3px rgba(37,99,235,0.5); }
-    .btn {
-      width: 100%;
-      padding: 0.8rem;
-      background: var(--primary);
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: var(--primary-hover); }
-    .social { display: flex; gap: 0.5rem; margin-top: 1rem; }
-    .social button {
-      flex: 1; padding: 0.6rem;
-      border: none; border-radius: 8px;
-      cursor: pointer; font-weight: bold;
-    }
-    .google { background: #db4437; color: #fff; }
-    .facebook { background: #4267B2; color: #fff; }
-    .alt { text-align: center; margin-top: 1rem; font-size: 0.9rem; }
-    .alt a { color: #fff; text-decoration: underline; }
-    .error { color: var(--danger); font-size: 0.85rem; min-height: 1em; }
+    .slider { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden; }
+    .slide { position:absolute; width:100%; height:100%; background-size:cover; background-position:center; opacity:0; transition:opacity 1s ease-in-out; }
+    .slide.active { opacity:1; }
+    .logo { position:fixed; top:0; left:0; width:192px; margin:10px; z-index:20; filter:drop-shadow(0 6px 18px rgba(0,0,0,0.35)); }
+    .avatar { position:fixed; top:10px; right:20px; width:60px; height:60px; border-radius:50%; border:2px solid #fff; object-fit:cover; z-index:20; box-shadow:0 4px 12px rgba(0,0,0,0.4); }
+    .welcome { max-width:420px; margin:60px auto 10px auto; padding:12px 16px; background:rgba(0,0,0,0.3); border-radius:8px; font-size:1.4rem; font-weight:bold; text-align:center; text-shadow:0 3px 8px rgba(0,0,0,0.6); }
+    .card { background:var(--card-bg); backdrop-filter:blur(10px); padding:2rem; border-radius:12px; max-width:420px; margin:auto; margin-top:10px; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+    h1 { text-align:center; margin-bottom:0.5rem; }
+    .subtitle { text-align:center; margin-bottom:1.5rem; font-size:0.9rem; opacity:0.85; }
+    .field { margin-bottom:1rem; }
+    label { display:block; margin-bottom:0.3rem; font-weight:bold; }
+    input { width:100%; padding:0.7rem; border:none; border-radius:8px; outline:none; }
+    input:focus { box-shadow:0 0 0 3px rgba(37,99,235,0.5); }
+    .btn { width:100%; padding:0.8rem; background:var(--primary); border:none; border-radius:8px; color:#fff; font-weight:bold; cursor:pointer; }
+    .btn:hover { background:var(--primary-hover); }
+    .alt { text-align:center; margin-top:1rem; font-size:0.9rem; }
+    .alt a { color:#fff; text-decoration:underline; }
+    .error { color:var(--danger); font-size:0.85rem; min-height:1em; }
+    .success { background:rgba(0,0,0,0.6); color:#fff; padding:10px; text-align:center; margin-top:10px; border-radius:6px; }
   </style>
 </head>
 <body>
-  <!-- Logo -->
   <img src="logo.png" alt="CulturHub Logo" class="logo">
-
-  <!-- Avatar -->
   <img src="avatar.png" alt="Profil Avatarı" class="avatar">
 
-  <!-- Karşılama yazısı -->
   <div class="welcome">
-    Kültürleri Birleştiren<br>
-    İnsanları Buluşturan<br>
-    CulturHub’a Hoş Geldiniz!
+    Kültürleri Birleştiren<br> İnsanları Buluşturan<br> CulturHub’a Hoş Geldiniz!
   </div>
 
-  <!-- Slider -->
   <div class="slider">
     <div class="slide active" style="background-image:url('1.jpg')"></div>
     <div class="slide" style="background-image:url('2.jpg')"></div>
@@ -160,7 +56,6 @@
     <div class="slide" style="background-image:url('4.jpg')"></div>
   </div>
 
-  <!-- Kart -->
   <div class="card">
     <h1>CulturHub</h1>
     <p class="subtitle">Topluluğa bağlanmak için giriş yap</p>
@@ -176,14 +71,11 @@
         <p class="error" id="passwordError"></p>
       </div>
       <button type="submit" class="btn">Giriş Yap</button>
-      <div class="social">
-        <button type="button" class="google">Google ile</button>
-        <button type="button" class="facebook">Facebook ile</button>
-      </div>
       <div class="alt">
-        Hesabın yok mu? <a href="#">Kaydol</a>
+        Hesabın yok mu? <a href="register.html">Kaydol</a>
       </div>
     </form>
+    <div id="successMsg"></div>
   </div>
 
   <script>
@@ -196,29 +88,25 @@
       slides[current].classList.add('active');
     }, 4000);
 
-    // Form doğrulama
+    // Form kontrolü
     const form = document.getElementById("loginForm");
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
-    const emailError = document.getElementById("emailError");
-    const passwordError = document.getElementById("passwordError");
-
     form.addEventListener("submit", e => {
       e.preventDefault();
-      let valid = true;
-      emailError.textContent = "";
-      passwordError.textContent = "";
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-      if (!email.value.includes("@")) {
-        emailError.textContent = "Geçerli bir e-posta girin.";
-        valid = false;
-      }
-      if (password.value.length < 8) {
-        passwordError.textContent = "Şifre en az 8 karakter olmalı.";
-        valid = false;
-      }
-      if (valid) {
-        alert("Giriş başarılı! (Demo)");
+      const user = JSON.parse(localStorage.getItem("user"));
+      if(user && user.email === email && user.password === password){
+        // Başarı mesajı göster
+        const msgBox = document.getElementById("successMsg");
+        msgBox.innerHTML = '<div class="success">Giriş başarılı! Yönlendiriliyorsunuz...</div>';
+
+        // 1 saniye sonra welcome.html'e yönlendir
+        setTimeout(()=>{
+          window.location.href = "welcome.html";
+        }, 1000);
+      } else {
+        alert("E-posta veya şifre hatalı!");
       }
     });
   </script>
