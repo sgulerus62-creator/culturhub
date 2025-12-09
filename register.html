@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CulturHub — Kayıt Ol</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    /* Arka plan slider */
+    .slider {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active { opacity: 1; }
+
+    /* Logo */
+    .logo {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      width: 180px;
+      height: auto;
+      z-index: 20;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+    }
+
+    /* Kart */
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 420px;
+      margin: 100px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    h1 { text-align: center; margin-bottom: 0.5rem; }
+    .subtitle { text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; opacity: 0.85; }
+
+    .field { margin-bottom: 1rem; }
+    label { display: block; margin-bottom: 0.3rem; font-weight: bold; }
+    input {
+      width: 100%;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+    input:focus { box-shadow: 0 0 0 3px rgba(37,99,235,0.5); }
+
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: #2563eb;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn:hover { background: #1d4ed8; }
+
+    .alt { text-align: center; margin-top: 1rem; font-size: 0.9rem; }
+    .alt a { color: #fff; text-decoration: underline; }
+
+    .success {
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+    .error {
+      color: #ff4d4d;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="CulturHub Logo" class="logo">
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slide active" style="background-image:url('1.jpg')"></div>
+    <div class="slide" style="background-image:url('2.jpg')"></div>
+    <div class="slide" style="background-image:url('3.jpg')"></div>
+    <div class="slide" style="background-image:url('4.jpg')"></div>
+  </div>
+
+  <!-- Kart -->
+  <div class="card">
+    <h1>Kayıt Ol</h1>
+    <p class="subtitle">Yeni bir hesap oluştur</p>
+    <form id="registerForm">
+      <div class="field">
+        <label for="username">Adınız</label>
+        <input type="text" id="username" placeholder="Adınızı girin" required>
+      </div>
+      <div class="field">
+        <label for="email">E-posta</label>
+        <input type="email" id="email" placeholder="ornek@culturhub.net" required>
+      </div>
+      <div class="field">
+        <label for="password">Şifre</label>
+        <input type="password" id="password" placeholder="••••••••" minlength="8" required>
+      </div>
+      <div class="field">
+        <label for="confirmPassword">Şifreyi Doğrula</label>
+        <input type="password" id="confirmPassword" placeholder="••••••••" minlength="8" required>
+        <p class="error" id="passwordError"></p>
+      </div>
+      <button type="submit" class="btn">Kaydol</button>
+      <div class="alt">
+        Zaten hesabın var mı? <a href="index.html">Giriş Yap</a>
+      </div>
+    </form>
+    <div id="successMsg"></div>
+  </div>
+
+  <script>
+    // Slider otomatik geçiş
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+
+    // Form kontrolü
+    const form = document.getElementById("registerForm");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+      const errorBox = document.getElementById("passwordError");
+      const msgBox = document.getElementById("successMsg");
+
+      // Şifre doğrulama
+      if(password !== confirmPassword){
+        errorBox.textContent = "Şifreler uyuşmuyor!";
+        return;
+      } else {
+        errorBox.textContent = "";
+      }
+
+      if(username && email && password){
+        const user = { username, email, password };
+        localStorage.setItem("user", JSON.stringify(user));
+
+        msgBox.innerHTML = '<div class="success">Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...</div>';
+
+        setTimeout(()=>{
+          window.location.href = "index.html";
+        }, 1500);
+      }
+    });
+  </script>
+</body>
+</html>
